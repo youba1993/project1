@@ -28,8 +28,8 @@ const getSingle = async (req, res) => {
 const createWorkout = async (req, res) => {
     const { title, load, reps } = req.body
 
-    let emptyFields = []
-
+    //error form handling from backend 
+    /* let emptyFields = []
     if (!title) {
         emptyFields.push('title')
     }
@@ -41,7 +41,8 @@ const createWorkout = async (req, res) => {
     }
     if(emptyFields.length > 0) {
         return res.status(400).json({error: 'Please fill in all the fields', emptyFields})
-    }
+    } */
+
     //add doc to db
     try {
         const workout = await Workout.create({ title, load, reps })
