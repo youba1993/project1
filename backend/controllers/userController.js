@@ -1,4 +1,4 @@
-
+const User = require('../models/userModel');
 
 // login user
 const loginUser = async (req, res)=>{
@@ -8,4 +8,9 @@ const loginUser = async (req, res)=>{
 //signup user
 const signupUser = async (req, res)=>{
     res.json({msg: 'user signup'})
+}
+
+module.exports = {
+    loginUser,
+    signupUser
 }
