@@ -18,7 +18,7 @@ function WorkoutDetails({workout}){
             <p><strong>Load (kg): </strong>{workout.load}</p>
             <p><strong>Reps: </strong>{workout.reps}</p>
             <p>{workout.createdAt}</p>
-            <span onClick={handleClick}>Delete</span>
+            <span className="material-symbols-outlined" onClick={handleClick}>Delete</span>
         </div>
     )
 }
