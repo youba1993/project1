@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt')
+const validator = require('validator')
 
 const Schema = mongoose.Schema;
 
@@ -17,14 +18,25 @@ const userSchema = new Schema({
 
 // Stastic signup method
 userSchema.statics.signup = async function (email, password) {
-    const exists = await this.findOne({email});
+
+    // Validation
+    if (!email || !password) {
+        throw Error('Fill all the blanks')
+    }
+    if (!validator.isEmail(email)) {
+        throw Error('email is not valid')
+    }
+    if (!validator.isStrongPassword(password)) {
+        throw Error('Password must contain letters numbers and characters')
+    }
+    const exists = await this.findOne({ email });
     if (exists) {
         throw Error('email already exist')
     }
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
-    const user = await this.create({ email, password: hash})
+    const user = await this.create({ email, password: hash })
 
     return user
 }
