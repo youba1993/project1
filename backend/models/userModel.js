@@ -19,7 +19,7 @@ const userSchema = new Schema({
 //     const exists = await this.findOne({email});
 //     if (exists) {
 //         throw Error('email already exist'){
-            
+
 //         }
 //     }
 // }
